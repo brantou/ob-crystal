@@ -1,2 +1,81 @@
-* ob-crystal
-Org-Babel support for evaluating crystal code.
+#+TITLE: ob-crystal
+
+* Introduction
+  :PROPERTIES:
+  :ID:       f77166b9-b12f-4d0b-899e-f2775a36c6fa
+  :END:
+
+  =ob-crystal= enables [[http://orgmode.org/worg/org-contrib/babel/intro.html][Org-Babel]] support for evaluating [[https://crystal-lang.org/][Crystal]] code.
+  It was created based on the usage of [[./ob-template.el][ob-template]].
+
+  #+BEGIN_SRC crystal
+  "hello world"
+  #+END_SRC
+
+  #+RESULTS:
+  : hello world
+
+* Examples
+  :PROPERTIES:
+  :ID:       f35f7535-4a10-4e8e-9c41-71d24e1a5aaf
+  :END:
+** variables
+   :PROPERTIES:
+   :ID:       e4f5eca1-cbd3-4a46-a8f3-ba92a2b869f6
+   :END:
+  : #+BEGIN_SRC crystal :var a=3 b=4
+  :   a+b
+  : #+END_SRC
+
+  : #+RESULTS:
+  : : 7
+** table and list
+   :PROPERTIES:
+   :ID:       58b80b9d-3337-4d7a-9872-3d88db8d3122
+   :END:
+  : #+NAME: tel-note
+  : | name  |    tel |
+  : |-------+--------|
+  : | brant | 170... |
+  : | ou    | 138... |
+
+  : #+BEGIN_SRC crystal :var tb=tel-note :results output table
+  :   puts tb
+  : #+END_SRC
+
+  : #+RESULTS:
+  : | brant | 170... |
+  : | ou    | 138... |
+
+  : #+BEGIN_SRC crystal :var lst='(1 2 3) :results output
+  :   puts lst
+  :   puts num for num in lst
+  : #+END_SRC
+
+  : #+RESULTS:
+  : : [ 1, 2, 3 ]
+  : : 1
+  : : 2
+  : : 3
+
+** literate programming
+   :PROPERTIES:
+   :ID:       a36c1ddb-7e37-4ffe-9399-3e8afabd8d51
+   :END:
+   : #+NAME: square
+   : #+BEGIN_SRC crystal
+   :   def square(x)
+   :      x * x
+   :   end
+   : #+END_SRC
+
+   : #+NAME: calc-square
+   : #+BEGIN_SRC crystal  :var x=0 :noweb strip-export :results output
+   : <<square>>
+   : puts square(x)
+   : #+END_SRC
+
+   : #+CALL: calc-square(x=5)
+
+   : #+RESULTS:
+   : : 25
