@@ -1,4 +1,5 @@
 #+TITLE: ob-crystal
+[[https://travis-ci.org/brantou/ob-crystal.svg?branch=master]]
 
 * Introduction
   :PROPERTIES:
