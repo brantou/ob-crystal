@@ -98,14 +98,14 @@
       (org-test-at-id "1f5d82ee-93a4-4821-85fb-c855188beb65"
                       (org-babel-next-src-block 3)
                       (should
-                       (string-equal "a,b,c" (org-babel-execute-src-block))))))
+                       (string-equal "(\"a\" \"b\" \"c\")" (org-babel-execute-src-block))))))
 
 (ert-deftest ob-crystal/ns-variable-tb ()
   (if (executable-find org-babel-crystal-command)
       (org-test-at-id "1f5d82ee-93a4-4821-85fb-c855188beb65"
                       (org-babel-next-src-block 4)
                       (should
-                       (string-equal "1,2,3,4" (org-babel-execute-src-block))))))
+                       (string-equal "((1 2) (3 4))" (org-babel-execute-src-block))))))
 
 (ert-deftest ob-crystal/ns-multi-variables ()
   (if (executable-find org-babel-crystal-command)
