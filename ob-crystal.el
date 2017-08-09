@@ -47,6 +47,7 @@
 ;;; Code:
 (require 'ob)
 (require 'ob-eval)
+(require 'ob-tangle)
 
 (defvar org-babel-tangle-lang-exts)
 (add-to-list 'org-babel-tangle-lang-exts '("crystal" . "cr"))
