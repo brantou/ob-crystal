@@ -55,15 +55,15 @@
 (def-edebug-spec org-test-at-id (form body))
 
 (unless (featurep 'ob-crystal)
-  (signal 'missing-test-dependency "Support for Coffee code blocks"))
+  (signal 'missing-test-dependency "Support for Crystal code blocks"))
 
-(ert-deftest ob-crystal/coffee-executable ()
+(ert-deftest ob-crystal/crystal-executable ()
   (should (executable-find org-babel-crystal-command)))
 
 (ert-deftest ob-crystal/ns-rt-value ()
   "Test no session return-type: value."
   (if (executable-find org-babel-crystal-command)
-      (org-test-at-id "036292ac-5694-4788-bd0e-eeecb4820020"
+      (org-test-at-id "977ba858-a4aa-4108-8e61-43dd880d5b08"
                       (org-babel-next-src-block 1)
                       (should
                        (string-equal
@@ -72,7 +72,7 @@
 (ert-deftest ob-crystal/ns-rt-output ()
   "Test no session return-type: output."
   (if (executable-find org-babel-crystal-command)
-      (org-test-at-id "036292ac-5694-4788-bd0e-eeecb4820020"
+      (org-test-at-id "977ba858-a4aa-4108-8e61-43dd880d5b08"
                       (org-babel-next-src-block 2)
                       (should
                        (string-equal
@@ -80,7 +80,7 @@
 
 (ert-deftest ob-crystal/ns-variable-int ()
   (if (executable-find org-babel-crystal-command)
-      (org-test-at-id "79274f81-96fa-4230-8846-b29113a82c89"
+      (org-test-at-id "1f5d82ee-93a4-4821-85fb-c855188beb65"
                       (org-babel-next-src-block 1)
                       (should
                        (equal
@@ -88,28 +88,28 @@
 
 (ert-deftest ob-crystal/ns-variable-str ()
   (if (executable-find org-babel-crystal-command)
-      (org-test-at-id "79274f81-96fa-4230-8846-b29113a82c89"
+      (org-test-at-id "1f5d82ee-93a4-4821-85fb-c855188beb65"
                       (org-babel-next-src-block 2)
                       (should
                        (string-equal "ob-crystal" (org-babel-execute-src-block))))))
 
 (ert-deftest ob-crystal/ns-variable-list ()
   (if (executable-find org-babel-crystal-command)
-      (org-test-at-id "79274f81-96fa-4230-8846-b29113a82c89"
+      (org-test-at-id "1f5d82ee-93a4-4821-85fb-c855188beb65"
                       (org-babel-next-src-block 3)
                       (should
                        (string-equal "a,b,c" (org-babel-execute-src-block))))))
 
 (ert-deftest ob-crystal/ns-variable-tb ()
   (if (executable-find org-babel-crystal-command)
-      (org-test-at-id "79274f81-96fa-4230-8846-b29113a82c89"
+      (org-test-at-id "1f5d82ee-93a4-4821-85fb-c855188beb65"
                       (org-babel-next-src-block 4)
                       (should
                        (string-equal "1,2,3,4" (org-babel-execute-src-block))))))
 
 (ert-deftest ob-crystal/ns-multi-variables ()
   (if (executable-find org-babel-crystal-command)
-      (org-test-at-id "79274f81-96fa-4230-8846-b29113a82c89"
+      (org-test-at-id "1f5d82ee-93a4-4821-85fb-c855188beb65"
                       (org-babel-next-src-block 5)
                       (should
                        (equal 12 (org-babel-execute-src-block))))))

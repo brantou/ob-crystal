@@ -12,6 +12,5 @@ test:
 	                'org-babel-load-languages '((emacs-lisp . t) \
 	                                            (sh . t) \
 	                                            (org . t) \
-	                                            (js . t) \
 	                                            (crystal . t))))" \
 	    -f ob-crystal-test-runall

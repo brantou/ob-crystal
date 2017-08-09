@@ -2,12 +2,12 @@
 #+OPTIONS: ^:nil
 
 * No session
-   :PROPERTIES:
-   :ID:       036292ac-5694-4788-bd0e-eeecb4820020
-   :END:
+  :PROPERTIES:
+  :ID:       37bab689-027c-4189-9abc-9a993da1c099
+  :END:
 ** return type
    :PROPERTIES:
-   :ID:       ee0cb5b4-7d0a-45a1-a683-edb69367c84f
+   :ID:       977ba858-a4aa-4108-8e61-43dd880d5b08
    :END:
    #+NAME: ns-rt-value
    #+BEGIN_SRC crystal :results value
@@ -21,13 +21,16 @@
 
 ** variable
    :PROPERTIES:
-   :ID:       79274f81-96fa-4230-8846-b29113a82c89
+   :ID:       1f5d82ee-93a4-4821-85fb-c855188beb65
    :END:
 
     #+NAME: ns-variable-int
     #+BEGIN_SRC crystal :results value :var x=5
       x
     #+END_SRC
+
+    #+RESULTS: ns-variable-int
+    : 5
 
     #+NAME: ns-variable-str
     #+BEGIN_SRC crystal :results value :var str="ob-crystal"
@@ -56,17 +59,17 @@
 
 * Test
   :PROPERTIES:
-  :ID:       c4e351f8-7556-4e08-a093-f9feb4bedcba
+  :ID:       0f17afd6-27b4-4186-aeb5-e0dd2b99a8fc
   :END:
 
   #+NAME: ob-crystal-tests
-  | functionality                     | block              | arg | expected   | results    | pass |
-  |-----------------------------------+--------------------+-----+------------+------------+------|
-  | return-type   : no session value  | ns-rt-value        |     | ob-crystal | ob-crystal | pass |
-  | return-type   : no session output | ns-rt-output       |     | ob-crystal | ob-crystal | pass |
-  | variable-int  : no session        | ns-variable-int    |     | 5          | 5          | pass |
-  | variable-str  : no session        | ns-variable-str    |     | ob-crystal | ob-crystal | pass |
-  | variable-list : no session        | ns-variable-list   |     | a,b,c      | a,b,c      | pass |
-  | variable-tb   : no session        | ns-variable-tb     |     | 1,2,3,4    | 1,2,3,4    | pass |
-  | variable-multi: no session        | ns-multi-variables |     | 12         | 12         | pass |
+  | functionality                     | block              | arg | expected      | results       | pass |
+  |-----------------------------------+--------------------+-----+---------------+---------------+------|
+  | return-type   : no session value  | ns-rt-value        |     | ob-crystal    | ob-crystal    | pass |
+  | return-type   : no session output | ns-rt-output       |     | ob-crystal    | ob-crystal    | pass |
+  | variable-int  : no session        | ns-variable-int    |     | 5             | 5             | pass |
+  | variable-str  : no session        | ns-variable-str    |     | ob-crystal    | ob-crystal    | pass |
+  | variable-list : no session        | ns-variable-list   |     | ("a" "b" "c") | ("a" "b" "c") | pass |
+  | variable-tb   : no session        | ns-variable-tb     |     | ((1 2) (3 4)) | ((1 2) (3 4)) | pass |
+  | variable-multi: no session        | ns-multi-variables |     | 12            | 12            | pass |
   #+TBLFM: $5='(org-sbe $2) :: $6='(if (string= $4 $5) "pass" (format "expected %S but was %S" $4 $5))
