@@ -79,3 +79,26 @@
 
    : #+RESULTS:
    : : 25
+
+* Running tests
+  :PROPERTIES:
+  :ID:       4cacd904-edb6-407e-9359-c6c2b05d45a9
+  :END:
+
+  Tests can be executed by /make test/ or invoking emacs directly with
+  the command-line below:
+
+  #+BEGIN_SRC shell
+    emacs -Q --batch -q \
+          -L . \
+          -l ob-crystal.el \
+          -l test-ob-crystal.el \
+          --eval "(progn \
+                    (setq org-confirm-babel-evaluate nil) \
+                    (org-babel-do-load-languages \
+                      'org-babel-load-languages '((emacs-lisp . t) \
+                                                  (sh . t) \
+                                                  (org . t) \
+                                                  (crystal . t))))" \
+          -f ob-crystal-test-runall
+  #+END_SRC

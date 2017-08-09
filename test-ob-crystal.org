@@ -1,0 +1,72 @@
+# -*- org-confirm-babel-evaluate: nil -*-
+#+OPTIONS: ^:nil
+
+* No session
+   :PROPERTIES:
+   :ID:       036292ac-5694-4788-bd0e-eeecb4820020
+   :END:
+** return type
+   :PROPERTIES:
+   :ID:       ee0cb5b4-7d0a-45a1-a683-edb69367c84f
+   :END:
+   #+NAME: ns-rt-value
+   #+BEGIN_SRC crystal :results value
+     "ob-crystal"
+   #+END_SRC
+
+   #+NAME: ns-rt-output
+   #+BEGIN_SRC crystal :results output
+     puts "ob-crystal"
+   #+END_SRC
+
+** variable
+   :PROPERTIES:
+   :ID:       79274f81-96fa-4230-8846-b29113a82c89
+   :END:
+
+    #+NAME: ns-variable-int
+    #+BEGIN_SRC crystal :results value :var x=5
+      x
+    #+END_SRC
+
+    #+NAME: ns-variable-str
+    #+BEGIN_SRC crystal :results value :var str="ob-crystal"
+      str
+    #+END_SRC
+
+    #+NAME: ns-variable-list
+    #+BEGIN_SRC crystal :results value silent :var list='("a" "b" "c")
+      list
+    #+END_SRC
+
+    #+NAME: num-tb
+    | 1 | 2 |
+    |---+---|
+    | 3 | 4 |
+
+    #+NAME: ns-variable-tb
+    #+BEGIN_SRC crystal :results value :var tb=num-tb :colnames no
+      tb
+    #+END_SRC
+
+    #+NAME: ns-multi-variables
+    #+BEGIN_SRC crystal :results value :var x=3 y=4 z=5
+      x+y+z
+    #+END_SRC
+
+* Test
+  :PROPERTIES:
+  :ID:       c4e351f8-7556-4e08-a093-f9feb4bedcba
+  :END:
+
+  #+NAME: ob-crystal-tests
+  | functionality                     | block              | arg | expected   | results    | pass |
+  |-----------------------------------+--------------------+-----+------------+------------+------|
+  | return-type   : no session value  | ns-rt-value        |     | ob-crystal | ob-crystal | pass |
+  | return-type   : no session output | ns-rt-output       |     | ob-crystal | ob-crystal | pass |
+  | variable-int  : no session        | ns-variable-int    |     | 5          | 5          | pass |
+  | variable-str  : no session        | ns-variable-str    |     | ob-crystal | ob-crystal | pass |
+  | variable-list : no session        | ns-variable-list   |     | a,b,c      | a,b,c      | pass |
+  | variable-tb   : no session        | ns-variable-tb     |     | 1,2,3,4    | 1,2,3,4    | pass |
+  | variable-multi: no session        | ns-multi-variables |     | 12         | 12         | pass |
+  #+TBLFM: $5='(org-sbe $2) :: $6='(if (string= $4 $5) "pass" (format "expected %S but was %S" $4 $5))
