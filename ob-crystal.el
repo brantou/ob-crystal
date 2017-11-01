@@ -7,6 +7,7 @@
 ;; Keywords: crystal, literate programming, reproducible research
 ;; Homepage: http://orgmode.org
 ;; Version:  0.0.1
+;; Package-Requires: ((emacs "24.3"))
 
 ;;; License:
 
@@ -29,7 +30,7 @@
 
 ;;; Commentary:
 ;;
-;; Org-Babel support for evaluating crystal-script code.
+;; Org-Babel support for evaluating crystal-lang code.
 ;;
 ;; It was created based on the usage of ob-template.
 ;;
