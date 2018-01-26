@@ -153,11 +153,9 @@ support for sessions"
 
 (defun org-babel-crystal-get-vars (params)
   "org-babel-get-header was removed in org version 8.3.3"
-  (let* ((fversion (org-version))
-         (version (string-to-int fversion)))
-    (if (< version 8.3)
-        (mapcar #'cdr (org-babel-get-header params :var))
-      (org-babel--get-vars params))))
+  (if (fboundp 'org-babel-get-header)
+      (mapcar #'cdr (org-babel-get-header params :var))
+    (org-babel--get-vars params)))
 
 (defun org-babel-crystal-var-to-crystal (var)
   "Convert VAR into a crystal variable.
